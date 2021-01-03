@@ -44,8 +44,8 @@ def is_eprime(sent: str) -> bool:
     else:
         return False
 
-# Convert all whitespace to simple spaces
 def remove_newlines(sentence: str) -> str:
+    """Convert all newlines, tabs, carriage returns to spaces."""
     return sentence.translate(whitespace_table)
 
 tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
@@ -56,8 +56,6 @@ total_count = 0
 print("== The following sentences were not E-Prime ==\n")
 for sent in tokenizer.tokenize(data):
     total_count += 1
-    #sentence_words = word_tokenize(sent)
-#    sentence_words_nopunct = [x.translate(nopunct_table) for x in sentence_words]
     oneline = remove_newlines(sent)
     if is_eprime(oneline):
         eprime_count += 1
